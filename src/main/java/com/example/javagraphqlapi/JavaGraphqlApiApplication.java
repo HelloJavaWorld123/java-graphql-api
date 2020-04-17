@@ -1,9 +1,12 @@
 package com.example.javagraphqlapi;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Repository;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.example.javagraphqlapi"})
+@MapperScan(annotationClass = Repository.class,basePackages = {"com.example.javagraphqlapi.dao.mysql"})
 public class JavaGraphqlApiApplication {
 
     public static void main(String[] args) {

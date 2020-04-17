@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javagraphqlapi.dao.mysql.AqyProductMapper">
+    <resultMap id="AqyProductResult" type="com.example.javagraphqlapi.model.mysql.AqyProduct">
+
+    </resultMap>
+
+    <sql id="AqyProduct">
+        id AS id,
+        create_date AS createDate,
+        del_flag AS delFlag,
+        remarks,
+        update_date AS updateDate,
+        price,
+        product_no AS productNo,
+        remark,
+        suppliers,
+        create_by AS createBy,
+        update_by AS updateBy,
+        active_code_number_used AS activeCodeNumberUsed,
+        active_code_number_not_used AS activeCodeNumberNotUsed
+    </sql>
+    <select id="ProductByProductNo" resultType="com.example.javagraphqlapi.model.mysql.AqyProduct">
+        SELECT <include refid="AqyProduct"/>
+        FROM aqy_product
+        WHERE product_no = #{productNo}
+    </select>
+</mapper>

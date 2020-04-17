@@ -1,1 +1,24 @@
+server:
+  port: 18801
+spring:
+  application:
+    name: graphql-application
+  profiles:
+    active: local
+mybatis:
+  mapper-locations: classpath*:mybatis/*.xml
+
+logging:
+  level:
+    com:
+      mysql: debug
+      graphql-java:
+        graphql: debug
+    org:
+      springframework:
+        jdbc: debug
+      apache:
+        ibatis: debug
+      mybatis:
+        spring: debug
 

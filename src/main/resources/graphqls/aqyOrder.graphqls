@@ -1,0 +1,27 @@
+type Query{
+code(orderNo: String): OrderCode
+}
+
+type OrderCode{
+id: ID
+code: String
+codeStatus: String
+orderNo: String
+productNo: String
+productName: String
+remark: String
+suppliers: String
+product: Product
+}
+
+type Product{
+id: ID
+delFlag: String
+price: Int
+productName: String
+productNo: String
+remark: String
+suppliers: Int
+activeCodeNumberUsed: Int
+activeCodeNumberNotUsed: Int
+}
