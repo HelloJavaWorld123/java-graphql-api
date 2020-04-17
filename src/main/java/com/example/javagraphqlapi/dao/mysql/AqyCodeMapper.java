@@ -13,5 +13,5 @@ import java.util.List;
  */
 @Repository
 public interface AqyCodeMapper {
-    List<AqyCode> listByOrderNo(@Param("orderNO") String orderNo);
+    List<AqyCode> listByOrderNo(@Param("orderNo") String orderNo);
 }

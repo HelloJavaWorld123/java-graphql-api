@@ -1,5 +1,5 @@
 type Query{
-code(orderNo: String): OrderCode
+codesByOrderNo(orderNo: String): OrderCode
 }
 
 type OrderCode{

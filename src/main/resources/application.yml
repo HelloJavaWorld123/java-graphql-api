@@ -11,11 +11,16 @@ mybatis:
 logging:
   level:
     com:
+      example:
+        javagraphqlapi:
+          dao: debug
       mysql: debug
       graphql-java:
         graphql: debug
     org:
       springframework:
+        web:
+          servlet: debug
         jdbc: debug
       apache:
         ibatis: debug

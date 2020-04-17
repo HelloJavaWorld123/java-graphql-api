@@ -4,7 +4,6 @@ import com.example.javagraphqlapi.dao.mysql.AqyCodeMapper;
 import com.example.javagraphqlapi.model.mysql.AqyCode;
 import com.example.javagraphqlapi.service.AqyCodeService;
 import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

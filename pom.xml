@@ -31,6 +31,11 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
 
 
         <!--datasource-->
@@ -86,24 +91,12 @@
             </exclusions>
         </dependency>
 
-
+        <!--google guava-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
 
         <!--graphql-->
         <dependency>
@@ -112,19 +105,17 @@
             <version>2020-04-04T07-05-23-9eae9c1</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.graphql-java</groupId>-->
+<!--            <artifactId>graphql-spring-boot-starter</artifactId>-->
+<!--            <version>5.0.2</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>5.0.2</version>
+            <artifactId>graphql-java-spring-webmvc</artifactId>
+            <version>2019-06-24T11-47-27-31ab4f9</version>
         </dependency>
-
-        <!--google guava-->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>29.0-jre</version>
-        </dependency>
-
     </dependencies>
 
     <build>

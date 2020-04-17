@@ -19,6 +19,6 @@
     </resultMap>
 
     <select id="listByOrderNo" resultMap="AqyCodeResultMq" parameterType="string">
-        SELECT * FROM aqy_order where order_no = #{orderNo}
+        SELECT * FROM aqy_code where order_no = #{orderNo}
     </select>
 </mapper>
