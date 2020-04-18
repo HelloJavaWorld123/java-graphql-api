@@ -26,5 +26,7 @@ hs_err_pid*
 *.iml
 *.md
 mvnw
+!README.md
 *.cmd
 .mvn
+target
