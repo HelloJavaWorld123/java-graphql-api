@@ -1,0 +1,11 @@
+type Product{
+    id: ID
+    delFlag: String
+    price: Int
+    productName: String
+    productNo: String
+    remark: String
+    suppliers: Int
+    activeCodeNumberUsed: Int
+    activeCodeNumberNotUsed: Int
+}

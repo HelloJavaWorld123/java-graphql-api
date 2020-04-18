@@ -1,0 +1,27 @@
+# 基本的单个查询 以及 列表查询
+type Query{
+    codeById(id: ID!): OrderCode
+    codesByOrderNo(orderNo: String!): [OrderCode]
+    listCode(code: String codeStatus: Int productNo: String): [OrderCode]
+    # 分页查询 并带有默认值
+    listCodePage(code: String first: Int=0 offset: Int=10): OrderCodePage
+}
+
+#返回分页列表
+type OrderCodePage{
+    pageInfo: PageInfo
+    orderCode: [OrderCode]
+}
+
+type OrderCode{
+    id: ID
+    code: String
+    codeStatus: String
+    orderNo: String
+    productNo: String!
+    productName: String!
+    remark: String
+    suppliers: String
+    # 引用 product
+    product: Product
+}

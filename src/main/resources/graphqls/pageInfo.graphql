@@ -1,0 +1,6 @@
+type PageInfo{
+    pageSize: Int
+    pageNum: Int
+    totalCount: Int
+    hasNext: Boolean
+}

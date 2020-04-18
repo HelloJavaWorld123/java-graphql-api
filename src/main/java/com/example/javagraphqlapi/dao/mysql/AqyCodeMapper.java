@@ -14,4 +14,6 @@ import java.util.List;
 @Repository
 public interface AqyCodeMapper {
     List<AqyCode> listByOrderNo(@Param("orderNo") String orderNo);
+
+    AqyCode findByCodeId(@Param("id") Long id);
 }

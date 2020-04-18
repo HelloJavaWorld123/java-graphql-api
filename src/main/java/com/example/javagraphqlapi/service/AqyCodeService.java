@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface AqyCodeService {
     DataFetcher<List<AqyCode>> listByOrderNo();
+
+    DataFetcher<AqyCode> getCodeById();
 }

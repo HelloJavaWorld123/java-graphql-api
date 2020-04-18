@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
  * Desc:
  */
 @Controller
-public class AqyController extends AbstractController{
+public class AqyOrderController extends AbstractController{
 
     @Autowired
     private AqyCodeService aqyCodeService;
@@ -31,9 +31,11 @@ public class AqyController extends AbstractController{
         return RuntimeWiring
                 .newRuntimeWiring()
                 .type(TypeRuntimeWiring.newTypeWiring("Query")
-                              .dataFetcher("codesByOrderNo",aqyCodeService.listByOrderNo()))
-                .type(TypeRuntimeWiring.newTypeWiring("OrderCode")
+                              .dataFetcher("codesByOrderNo",aqyCodeService.listByOrderNo())
+                ).type(TypeRuntimeWiring.newTypeWiring("OrderCode")
                         .dataFetcher("product",aqyProductService.listByProductNo()))
+                .type(TypeRuntimeWiring.newTypeWiring("Query")
+                        .dataFetcher("codeById",aqyCodeService.getCodeById()))
                 .build();
     }
 }

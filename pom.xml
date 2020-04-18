@@ -116,6 +116,15 @@
             <artifactId>graphql-java-spring-webmvc</artifactId>
             <version>2019-06-24T11-47-27-31ab4f9</version>
         </dependency>
+
+        <!--工具类-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

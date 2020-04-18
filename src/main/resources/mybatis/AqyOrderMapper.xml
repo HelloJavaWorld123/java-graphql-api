@@ -18,7 +18,29 @@
         <result column="validity_date" property="validityDate"/>
     </resultMap>
 
+    <sql id="AqyCode">
+        id,
+        code,
+        codestatus AS codeStatus,
+        create_date AS createDate,
+        order_no AS orderNo,
+        product_no AS productNo,
+        product_name AS productName,
+        remark AS ramark,
+        suppliers AS suppliers,
+        valid_start AS validStart,
+        valid_end AS validEnd,
+        import_start AS importStart,
+        import_end AS importEnd,
+        validity_date AS validityDate
+    </sql>
+
     <select id="listByOrderNo" resultMap="AqyCodeResultMq" parameterType="string">
         SELECT * FROM aqy_code where order_no = #{orderNo}
+    </select>
+    <select id="findByCodeId" resultType="com.example.javagraphqlapi.model.mysql.AqyCode">
+        SELECT <include refid="AqyCode"/>
+        FROM aqy_code
+        WHERE identity = #{id}
     </select>
 </mapper>
