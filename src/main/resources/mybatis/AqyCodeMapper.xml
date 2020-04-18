@@ -21,7 +21,7 @@
     <sql id="AqyCode">
         id,
         code,
-        codestatus AS codeStatus,
+        code_status AS codeStatus,
         create_date AS createDate,
         order_no AS orderNo,
         product_no AS productNo,
@@ -39,8 +39,38 @@
         SELECT * FROM aqy_code where order_no = #{orderNo}
     </select>
     <select id="findByCodeId" resultType="com.example.javagraphqlapi.model.mysql.AqyCode">
-        SELECT <include refid="AqyCode"/>
+        SELECT
+        <include refid="AqyCode"/>
         FROM aqy_code
-        WHERE identity = #{id}
+        WHERE id = #{id}
+    </select>
+    <select id="findByParams" resultMap="AqyCodeResultMq">
+        SELECT * FROM aqy_code
+        <where>
+            <if test="orderNo != null and orderNo != ''">
+                order_no = #{orderNo}
+            </if>
+            <if test="code != null and code != ''">
+                AND code = #{code}
+            </if>
+            <if test="codeStatus != null">
+                AND code_status = #{codeStatus}
+            </if>
+        </where>
+    </select>
+    <select id="listCodeByPage" resultMap="AqyCodeResultMq">
+        SELECT * FROM aqy_code
+        <where>
+            <if test="orderNo != null and orderNo != ''">
+                order_no = #{orderNo}
+            </if>
+            <if test="code != null and code != ''">
+                AND code = #{code}
+            </if>
+            <if test="codeStatus != null">
+                AND code_status = #{codeStatus}
+            </if>
+        </where>
+        LIMIT #{start},#{offset}
     </select>
 </mapper>

@@ -7,6 +7,7 @@ spring:
 
 logging:
   level:
+    notprivacysafe: debug
     graphql:
       spring:
         web:

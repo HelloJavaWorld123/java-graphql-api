@@ -15,11 +15,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AqyCodeController extends AbstractController{
 
-    @Autowired
-    private AqyCodeService aqyCodeService;
+    private final AqyCodeService aqyCodeService;
 
-    @Autowired
-    private AqyProductService aqyProductService;
+    private final AqyProductService aqyProductService;
+
+    public AqyCodeController(AqyCodeService aqyCodeService, AqyProductService aqyProductService) {
+        this.aqyCodeService = aqyCodeService;
+        this.aqyProductService = aqyProductService;
+    }
 
     @Override
     protected RuntimeWiring buildWiring() {
@@ -27,10 +30,11 @@ public class AqyCodeController extends AbstractController{
                 .newRuntimeWiring()
                 .type(TypeRuntimeWiring.newTypeWiring("Query")
                               .dataFetcher("codesByOrderNo",aqyCodeService.listByOrderNo())
+                        .dataFetcher("codeById", aqyCodeService.getCodeById())
+                        .dataFetcher("listCode",aqyCodeService.findByParams())
+                        .dataFetcher("listCodePage", aqyCodeService.ListCodePage())
                 ).type(TypeRuntimeWiring.newTypeWiring("OrderCode")
                         .dataFetcher("product",aqyProductService.listByProductNo()))
-                .type(TypeRuntimeWiring.newTypeWiring("Query")
-                        .dataFetcher("codeById",aqyCodeService.getCodeById()))
                 .build();
     }
 }

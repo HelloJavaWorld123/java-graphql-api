@@ -14,4 +14,8 @@ public interface AqyCodeService {
     DataFetcher<List<AqyCode>> listByOrderNo();
 
     DataFetcher<AqyCode> getCodeById();
+
+    DataFetcher<List<AqyCode>> findByParams();
+
+    DataFetcher<List<AqyCode>> ListCodePage();
 }

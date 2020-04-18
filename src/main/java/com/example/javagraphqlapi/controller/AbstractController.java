@@ -39,7 +39,7 @@ import java.util.*;
 public abstract class AbstractController {
 
     protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private Set<String> CUSTOMER_GRAPHQL_FILE = new HashSet<>();
+    private final Set<String> CUSTOMER_GRAPHQL_FILE = new HashSet<>();
     private static final String RESOURCE_PACKAGE = "graphqls/";
     private static final String RESOURCE_SUFFIX = ".graphql";
 

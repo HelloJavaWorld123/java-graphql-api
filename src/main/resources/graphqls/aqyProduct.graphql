@@ -5,7 +5,7 @@ type Product{
     productName: String
     productNo: String
     remark: String
-    suppliers: Int
+    suppliers: String
     activeCodeNumberUsed: Int
     activeCodeNumberNotUsed: Int
 }
