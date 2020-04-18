@@ -1,6 +1,9 @@
 # java-graphql-api
 Spring Boot GraphQL API
 
+#### 扩展
+- ExecutionIdProvider 为每一个请求 产生一个唯一的id 默认的是 UUID；产生的规则可以根据请求以及请求参数扩展生成
+
 
 # Q&A
 - graphql.schema.idl.errors.SchemaProblem: errors=[The field type 'int' is not present when resolving type 'Product' [@17:1], The field type 'int' is not present when resolving type 'Product' [@17:1], The field type 'int' is not present when resolving type 'Product' [@17:1], The field type 'int' is not present when resolving type 'Product' [@17:1]]

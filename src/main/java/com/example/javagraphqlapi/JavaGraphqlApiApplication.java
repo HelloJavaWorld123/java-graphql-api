@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Repository;
 
-@SpringBootApplication(scanBasePackages = {"com.example.javagraphqlapi","graphql.spring.web.servlet"})
+@SpringBootApplication(scanBasePackages = {"com.example.javagraphqlapi"})
 @MapperScan(annotationClass = Repository.class,basePackages = {"com.example.javagraphqlapi.dao.mysql"})
 public class JavaGraphqlApiApplication {
 

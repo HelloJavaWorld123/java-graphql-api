@@ -32,7 +32,8 @@ public class AqyController extends AbstractController{
                 .newRuntimeWiring()
                 .type(TypeRuntimeWiring.newTypeWiring("Query")
                               .dataFetcher("codesByOrderNo",aqyCodeService.listByOrderNo()))
-                .type(TypeRuntimeWiring.newTypeWiring("OrderCode").dataFetcher("product",aqyProductService.listByProductNo()))
+                .type(TypeRuntimeWiring.newTypeWiring("OrderCode")
+                        .dataFetcher("product",aqyProductService.listByProductNo()))
                 .build();
     }
 }

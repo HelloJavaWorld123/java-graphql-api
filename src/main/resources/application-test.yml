@@ -1,2 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/aqy?allowMultiQuries=true&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 关联了 GraphQLController
 graphql:
-  url: test
+  url: /local

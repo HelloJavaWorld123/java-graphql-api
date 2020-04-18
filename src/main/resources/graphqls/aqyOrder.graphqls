@@ -1,14 +1,19 @@
 type Query{
-codesByOrderNo(orderNo: String): [OrderCode]
-}
+        codesByOrderNo(orderNo: String!): [OrderCode]
+        listCode(
+            code: String
+            codeStatus: Int
+            productNo: String
+        ): [OrderCode]
+     }
 
 type OrderCode{
 id: ID
 code: String
 codeStatus: String
 orderNo: String
-productNo: String
-productName: String
+productNo: String!
+productName: String!
 remark: String
 suppliers: String
 product: Product
