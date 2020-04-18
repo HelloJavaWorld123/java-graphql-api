@@ -13,18 +13,13 @@ import org.springframework.stereotype.Controller;
  * Desc:
  */
 @Controller
-public class AqyOrderController extends AbstractController{
+public class AqyCodeController extends AbstractController{
 
     @Autowired
     private AqyCodeService aqyCodeService;
 
     @Autowired
     private AqyProductService aqyProductService;
-
-    @Override
-    protected String getResourceName() {
-        return "aqyOrder";
-    }
 
     @Override
     protected RuntimeWiring buildWiring() {

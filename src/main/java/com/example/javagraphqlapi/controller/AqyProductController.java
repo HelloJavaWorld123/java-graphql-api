@@ -11,10 +11,6 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class AqyProductController extends AbstractController{
-    @Override
-    protected String getResourceName() {
-        return "aqyProduct";
-    }
 
     @Override
     protected RuntimeWiring buildWiring() {

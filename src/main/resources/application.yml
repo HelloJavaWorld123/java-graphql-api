@@ -4,26 +4,6 @@ spring:
   application:
     name: graphql-application
   profiles:
-    active: local
+    active: test
 mybatis:
   mapper-locations: classpath*:mybatis/*.xml
-
-logging:
-  level:
-    com:
-      example:
-        javagraphqlapi:
-          dao: debug
-      mysql: debug
-      graphql-java:
-        graphql: debug
-    org:
-      springframework:
-        web:
-          servlet: debug
-        jdbc: debug
-      apache:
-        ibatis: debug
-      mybatis:
-        spring: debug
-

@@ -12,10 +12,6 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class PageInfoController extends AbstractController {
-    @Override
-    protected String getResourceName() {
-        return "pageInfo";
-    }
 
     @Override
     protected RuntimeWiring buildWiring() {

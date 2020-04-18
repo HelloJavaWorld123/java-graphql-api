@@ -119,7 +119,5 @@ public abstract class AbstractController {
         });
     }
 
-    protected abstract String getResourceName();
-
     protected abstract RuntimeWiring buildWiring();
 }

@@ -5,6 +5,27 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+logging:
+  level:
+    graphql:
+      spring:
+        web:
+          servlet: debug
+    web: info
+    com:
+      example:
+        javagraphqlapi:
+          dao: debug
+      mysql: debug
+    org:
+      springframework:
+        jdbc: debug
+      apache:
+        ibatis: debug
+      mybatis:
+        spring: debug
+
+
 # 关联了 GraphQLController
 graphql:
-  url: /local
+  url: /test
