@@ -2,6 +2,7 @@ package com.example.javagraphqlapi.controller;
 
 import com.example.javagraphqlapi.service.AqyCodeService;
 import com.example.javagraphqlapi.service.AqyProductService;
+import graphql.schema.StaticDataFetcher;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.TypeRuntimeWiring;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * Desc:
  */
 @Controller
-public class AqyCodeController extends AbstractController{
+public class AqyCodeController extends AbstractController {
 
     private final AqyCodeService aqyCodeService;
 
@@ -26,15 +27,19 @@ public class AqyCodeController extends AbstractController{
 
     @Override
     protected RuntimeWiring buildWiring() {
+        TypeRuntimeWiring.newTypeWiring("").dataFetcher("",new StaticDataFetcher("")).build();
         return RuntimeWiring
                 .newRuntimeWiring()
                 .type(TypeRuntimeWiring.newTypeWiring("Query")
-                              .dataFetcher("codesByOrderNo",aqyCodeService.listByOrderNo())
+                        .dataFetcher("codesByOrderNo", aqyCodeService.listByOrderNo())
                         .dataFetcher("codeById", aqyCodeService.getCodeById())
-                        .dataFetcher("listCode",aqyCodeService.findByParams())
+                        .dataFetcher("listCode", aqyCodeService.findByParams())
                         .dataFetcher("listCodePage", aqyCodeService.ListCodePage())
-                ).type(TypeRuntimeWiring.newTypeWiring("OrderCode")
-                        .dataFetcher("product",aqyProductService.listByProductNo()))
+                )
+                .type(TypeRuntimeWiring.newTypeWiring("OrderCode")
+                        .dataFetcher("product", aqyProductService.listByProductNo()))
+                .type(TypeRuntimeWiring.newTypeWiring("OrderCodePage")
+                        .dataFetcher("pageInfo", aqyCodeService.pageInfo()))
                 .build();
     }
 }

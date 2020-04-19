@@ -64,13 +64,15 @@
             <if test="orderNo != null and orderNo != ''">
                 order_no = #{orderNo}
             </if>
-            <if test="code != null and code != ''">
-                AND code = #{code}
-            </if>
-            <if test="codeStatus != null">
-                AND code_status = #{codeStatus}
-            </if>
         </where>
         LIMIT #{start},#{offset}
+    </select>
+    <select id="pageCountByParams" resultType="java.lang.Integer">
+        SELECT count(id) FROM aqy_code
+        <where>
+            <if test="orderNo != null and orderNo != ''">
+                order_no = #{orderNo}
+            </if>
+        </where>
     </select>
 </mapper>

@@ -11,4 +11,6 @@ import graphql.schema.DataFetchingEnvironment;
  */
 public interface AqyProductService {
     DataFetcher<AqyProduct> listByProductNo();
+
+    DataFetcher<AqyProduct> productInfo();
 }

@@ -5,10 +5,13 @@ import com.example.javagraphqlapi.model.mysql.AqyCode;
 import com.example.javagraphqlapi.model.mysql.AqyProduct;
 import com.example.javagraphqlapi.service.AqyProductService;
 import graphql.schema.DataFetcher;
+import graphql.schema.DataFetchingEnvironment;
+import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author : RXK
@@ -26,6 +29,18 @@ public class AqyProductServiceImpl implements AqyProductService {
         return dataFetchingEnvironment->{
             AqyCode aqyCode = dataFetchingEnvironment.getSource();
             return aqyProductMapper.ProductByProductNo(aqyCode.getProductNo());
+        };
+    }
+
+    @Override
+    public DataFetcher<AqyProduct> productInfo() {
+        return dataFetchingEnvironment->{
+            boolean present = Optional.ofNullable(dataFetchingEnvironment.getArgument("id")).isPresent();
+            if(present){
+                long id = Long.parseLong(dataFetchingEnvironment.getArgument("id"));
+                return aqyProductMapper.productById(id);
+            }
+            return new AqyProduct();
         };
     }
 }

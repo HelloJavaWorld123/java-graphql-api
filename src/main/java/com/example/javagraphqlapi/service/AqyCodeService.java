@@ -1,5 +1,6 @@
 package com.example.javagraphqlapi.service;
 
+import com.example.javagraphqlapi.model.PageInfo;
 import com.example.javagraphqlapi.model.mysql.AqyCode;
 import graphql.schema.DataFetcher;
 
@@ -18,4 +19,6 @@ public interface AqyCodeService {
     DataFetcher<List<AqyCode>> findByParams();
 
     DataFetcher<List<AqyCode>> ListCodePage();
+
+    DataFetcher<PageInfo> pageInfo();
 }

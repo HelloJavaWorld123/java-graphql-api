@@ -25,4 +25,8 @@
         FROM aqy_product
         WHERE product_no = #{productNo}
     </select>
+    <select id="productById" resultType="com.example.javagraphqlapi.model.mysql.AqyProduct">
+        SELECT <include refid="AqyProduct"/>
+        FROM aqy_product where id = #{id}
+    </select>
 </mapper>

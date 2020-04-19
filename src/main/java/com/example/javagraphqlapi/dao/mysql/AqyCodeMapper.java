@@ -17,7 +17,9 @@ public interface AqyCodeMapper {
 
     AqyCode findByCodeId(@Param("id") Long id);
 
-    List<AqyCode> findByParams(@Param("orderNo") String orderNo, @Param("code") String code, @Param("codeStatus") Integer codeStatus);
+    List<AqyCode> findByParams(@Param("orderNo") String orderNo, @Param("code") String code, @Param("codeStatus") String codeStatus);
 
-    List<AqyCode> listCodeByPage(@Param("code") String code, @Param("start") Integer start, @Param("offset") Integer offset);
+    List<AqyCode> listCodeByPage(@Param("orderNo") String orderNo, @Param("start") Integer start, @Param("offset") Integer offset);
+
+    int pageCountByParams(@Param("orderNo") String orderNo, @Param("code") String code, @Param("codeStatus") String codeStatus);
 }

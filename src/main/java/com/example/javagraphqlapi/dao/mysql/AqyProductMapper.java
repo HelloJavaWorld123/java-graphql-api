@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AqyProductMapper {
     AqyProduct ProductByProductNo(@Param("productNo") String productNo);
+
+    AqyProduct productById(@Param("id") long id);
 }

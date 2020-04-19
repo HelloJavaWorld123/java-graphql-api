@@ -2,6 +2,9 @@ type Query{
     codeById(id: ID!): OrderCode
     listCode(orderNo: String code: String codeStatus: Int productNo: String): [OrderCode]
     listCodePage(orderNo: String first: Int offset: Int): OrderCodePage
+
+
+    productInfo(id:ID!): Product
 }
 
 type OrderCodePage{

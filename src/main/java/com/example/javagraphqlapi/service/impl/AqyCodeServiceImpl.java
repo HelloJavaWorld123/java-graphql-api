@@ -1,15 +1,18 @@
 package com.example.javagraphqlapi.service.impl;
 
 import com.example.javagraphqlapi.dao.mysql.AqyCodeMapper;
+import com.example.javagraphqlapi.model.PageInfo;
 import com.example.javagraphqlapi.model.mysql.AqyCode;
 import com.example.javagraphqlapi.service.AqyCodeService;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.rmi.runtime.Log;
 
+import javax.swing.table.TableCellRenderer;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
@@ -46,11 +49,7 @@ public class AqyCodeServiceImpl implements AqyCodeService {
         return dataFetchingEnvironment->{
             String orderNo = dataFetchingEnvironment.getArgument("orderNo");
             String code = dataFetchingEnvironment.getArgument("code");
-            String strCodeStatus = dataFetchingEnvironment.getArgument("codeStatus");
-            Integer codeStatus = null;
-            if (StringUtils.isNoneEmpty(strCodeStatus)){
-                codeStatus = Integer.parseInt(strCodeStatus);
-            }
+            String codeStatus = dataFetchingEnvironment.getArgument("codeStatus");
             return aqyCodeMapper.findByParams(orderNo,code,codeStatus);
         };
     }
@@ -58,11 +57,24 @@ public class AqyCodeServiceImpl implements AqyCodeService {
     @Override
     public DataFetcher<List<AqyCode>> ListCodePage() {
         return dataFetchingEnvironment->{
-            String code = dataFetchingEnvironment.getArgument("orderNo");
-            Integer pageSize = dataFetchingEnvironment.getArgument("pageSize");
-            Integer pageNum = dataFetchingEnvironment.getArgument("pageNum");
+            String orderNo = dataFetchingEnvironment.getArgument("orderNo");
+            int pageSize =  Integer.parseInt((String) Optional.ofNullable(dataFetchingEnvironment.getArgument("pageSize")).orElse("10"));
+            int pageNum = Integer.parseInt((String)Optional.ofNullable(dataFetchingEnvironment.getArgument("pageNum")).orElse("0"));
             pageNum = pageNum * pageSize;
-           return aqyCodeMapper.listCodeByPage(code,pageNum,pageSize);
+           return aqyCodeMapper.listCodeByPage(orderNo,pageNum,pageSize);
+        };
+    }
+
+    @Override
+    public DataFetcher<PageInfo> pageInfo() {
+        return dataFetchingEnvironment->{
+            String orderNo = dataFetchingEnvironment.getArgument("orderNo");
+            String code = dataFetchingEnvironment.getArgument("code");
+            String codeStatus = dataFetchingEnvironment.getArgument("codeStatus");
+            int pageSize =  Integer.parseInt((String) Optional.ofNullable(dataFetchingEnvironment.getArgument("pageSize")).orElse("10"));
+            int pageNum = Integer.parseInt((String)Optional.ofNullable(dataFetchingEnvironment.getArgument("pageNum")).orElse("0"));
+            int totalCount = aqyCodeMapper.pageCountByParams(orderNo,code,codeStatus);
+            return new PageInfo(totalCount,pageSize,pageNum, true);
         };
     }
 }

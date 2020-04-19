@@ -1,6 +1,9 @@
 package com.example.javagraphqlapi.controller;
 
+import com.example.javagraphqlapi.service.AqyProductService;
 import graphql.schema.idl.RuntimeWiring;
+import graphql.schema.idl.TypeRuntimeWiring;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -10,11 +13,20 @@ import org.springframework.stereotype.Controller;
  * Desc:
  */
 @Controller
-public class AqyProductController extends AbstractController{
+public class AqyProductController extends AbstractController {
+
+    private final AqyProductService aqyProductService;
+
+    public AqyProductController(AqyProductService aqyProductService) {
+        this.aqyProductService = aqyProductService;
+    }
+
 
     @Override
     protected RuntimeWiring buildWiring() {
-      return RuntimeWiring.newRuntimeWiring()
+        return RuntimeWiring.newRuntimeWiring()
+                .type(TypeRuntimeWiring.newTypeWiring("Query")
+                        .dataFetcher("productInfo", aqyProductService.productInfo()))
                 .build();
     }
 }
