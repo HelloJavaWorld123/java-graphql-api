@@ -1,4 +1,4 @@
-type PageInfo{
+interface PageInfo{
     pageSize: Int
     pageNum: Int
     totalCount: Int

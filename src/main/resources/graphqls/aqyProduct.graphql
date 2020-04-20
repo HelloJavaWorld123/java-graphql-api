@@ -1,4 +1,9 @@
-
+type productInfoApi{
+    #查询产品详细信息
+    productInfo(id: ID!): Product
+    #查询产品集合
+    productList: [Product]
+}
 
 type Product{
     id: ID

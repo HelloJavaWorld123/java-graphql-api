@@ -7,9 +7,11 @@ import graphql.schema.idl.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -30,7 +32,6 @@ public abstract class AbstractController {
     private static final String RESOURCE_PACKAGE = "graphqls/";
     private static final String RESOURCE_SUFFIX = ".graphql";
     private final String ALL_RESOURCE_PATH = CLASSPATH_ALL_URL_PREFIX + RESOURCE_PACKAGE + File.separator + "*" + RESOURCE_SUFFIX;
-    ;
 
     private GraphQL graphQL;
 

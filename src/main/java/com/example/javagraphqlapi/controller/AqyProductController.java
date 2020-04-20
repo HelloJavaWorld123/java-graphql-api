@@ -25,7 +25,7 @@ public class AqyProductController extends AbstractController {
     @Override
     protected RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
-                .type(TypeRuntimeWiring.newTypeWiring("Query")
+                .type(TypeRuntimeWiring.newTypeWiring("productInfoApi")
                         .dataFetcher("productInfo", aqyProductService.productInfo()))
                 .build();
     }

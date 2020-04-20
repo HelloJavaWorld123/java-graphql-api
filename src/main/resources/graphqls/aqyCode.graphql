@@ -1,14 +1,17 @@
-type Query{
+type codeQueryApi{
+    #更具id 查询详细内容
     codeById(id: ID!): OrderCode
+    #查询集合
     listCode(orderNo: String code: String codeStatus: Int productNo: String): [OrderCode]
+    #分页查询
     listCodePage(orderNo: String first: Int offset: Int): OrderCodePage
-
-
-    productInfo(id:ID!): Product
 }
 
-type OrderCodePage{
-    pageInfo: PageInfo
+type OrderCodePage implements PageInfo{
+    pageSize: Int
+    pageNum: Int
+    totalCount: Int
+    hasNext: Boolean
     orderCode: [OrderCode]
 }
 
